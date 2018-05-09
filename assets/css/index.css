@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+  background: url(https://static.pexels.com/photos/164024/pexels-photo-164024.jpeg) no-repeat fixed center;
+  background-length: 100%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+.tempToggle:hover {
+  color: rgb(38, 198, 218);
+}
+
+.containerGrid {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.7),
+              3px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  border-radius: 5px;
+  width: 20%;
+  margin: auto;
+  grid-gap: 20px;
+}
+/* .content {
+  grid-column: 3 / 5;
+  text-align: center;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.7),
+              3px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  border-radius: 2px;
+} */
+
+/* BUTTON - MORE INFO */
+a {
+  text-decoration: none;
+  border-radius: 2px;
+  color: white;
+}
+a:hover {
+  color: rgb(38, 198, 218);
+}
+
+/* MORE INFO SECTION */
+.hideMoreInfo {
+  display: none;
+}
+ul {
+  list-style: none;
+}
