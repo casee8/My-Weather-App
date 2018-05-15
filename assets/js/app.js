@@ -31,10 +31,11 @@ function showPosition(position) {
 
 function weatherApp() {
   var xmlhttp = new XMLHttpRequest();
-  var url = "https://fcc-weather-api.glitch.me//api/current?lon=" + lon + "&lat=" + lat;
+  var url = "http://api.wunderground.com/api/b47388355b8e168a/conditions/" + lat + "," + lon + ".json";
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var myArr = JSON.parse(this.responseText);
+      console.log(myArr);
       var temperature = myArr.main.temp;
       var weatherCondition = myArr.weather[0].description;
       var icon = myArr.weather[0].icon;
