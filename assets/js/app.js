@@ -40,7 +40,7 @@ function weatherApp() {
       var weatherCondition = myArr.weather[0].description;
       var icon = myArr.weather[0].icon;
 
-      //       MORE INFO
+      //        MORE INFO
       var tempMin = myArr.main.temp_min,
         tempMax = myArr.main.temp_max,
         humidity = myArr.main.humidity,
