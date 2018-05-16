@@ -31,7 +31,7 @@ function showPosition(position) {
 
 function weatherApp() {
   var xmlhttp = new XMLHttpRequest();
-  var url = "http://api.wunderground.com/api/b47388355b8e168a/conditions/q/" + lat + "," + lon + ".json";
+  var url = "https://api.wunderground.com/api/b47388355b8e168a/conditions/q/" + lat + "," + lon + ".json";
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var myArr = JSON.parse(this.responseText);
