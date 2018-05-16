@@ -1,18 +1,17 @@
 var locationName = document.getElementsByClassName("locationName")[0];
 var description = document.querySelector(".description");
 var temperat = document.getElementById("temperat");
-var tempToggle = $(".tempToggle")[0];
 var img = document.querySelector("img");
 var lat;
 var lon;
 // More Info staff
 var button = document.querySelector("a"),
-  moreInfo = document.querySelector(".moreInfo"),
-  tempMinPlace = document.querySelector("#tempMin"),
-  tempMaxPlace = document.querySelector("#tempMax"),
-  humidityPlace = document.querySelector("#humidity"),
-  pressurePlace = document.querySelector("#pressure"),
-  windSpeedPlace = document.querySelector("#windSpeed");
+    moreInfo = document.querySelector(".moreInfo"),
+    tempMinPlace = document.querySelector("#tempMin"),
+    tempMaxPlace = document.querySelector("#tempMax"),
+    humidityPlace = document.querySelector("#humidity"),
+    pressurePlace = document.querySelector("#pressure"),
+    windSpeedPlace = document.querySelector("#windSpeed");
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -35,34 +34,34 @@ function weatherApp() {
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var myArr = JSON.parse(this.responseText);
-      console.log(myArr);
-      var temperature = myArr.main.temp;
-      var weatherCondition = myArr.weather[0].description;
-      var icon = myArr.weather[0].icon;
+      console.log(myArr.current_observation);
+      var temperature = myArr.current_observation.temp_c;
+      var weatherCondition = myArr.current_observation.weather;
+      var icon = myArr.current_observation.icon_url;
 
       //         MORE INFO
-      var tempMin = myArr.main.temp_min,
-        tempMax = myArr.main.temp_max,
-        humidity = myArr.main.humidity,
-        pressure = myArr.main.pressure,
-        windSpeed = myArr.wind.speed;
+      var tempMin = myArr.current_observation.dewpoint_c,
+          // tempMax = myArr.current_observation.main.temp_max,
+          humidity = myArr.current_observation.relative_humidity,
+          pressure = myArr.current_observation.pressure_mb,
+          windSpeed = myArr.current_observation.wind_kph;
 
-      temperat.innerText = Math.round(temperature);
+      temperat.innerText = temperature;
       description.innerText = weatherCondition;
       img.setAttribute("src", icon);
-      tempToggle.onclick = function () {
-        if (tempToggle.innerText == "C") {
-          tempToggle.innerText = "F";
-          temperat.innerText = Math.round(temperature * (9 / 5) + 32);
-        } else {
-          tempToggle.innerText = "C";
-          temperat.innerText = Math.round(temperature);
-        }
-      }
+      // tempToggle.onclick = function () {
+      //   if (tempToggle.innerText == "C") {
+      //     tempToggle.innerText = "F";
+      //     temperat.innerText = Math.round(temperature * (9 / 5) + 32);
+      //   } else {
+      //     tempToggle.innerText = "C";
+      //     temperat.innerText = Math.round(temperature);
+      //   }
+      // }
 
       tempMinPlace.innerHTML = "Minimum temperature: " + tempMin + " °<span class='tempToggle'>C</span>";
-      tempMaxPlace.innerHTML = "Maximum temperature: " + tempMax + " °<span class='tempToggle'>C</span>";
-      humidityPlace.innerText = "Humidity: " + humidity + " %";
+      // tempMaxPlace.innerHTML = "Maximum temperature: " + tempMax + " °<span class='tempToggle'>C</span>";
+      humidityPlace.innerText = "Humidity: " + humidity;
       pressurePlace.innerText = "Pressure: " + pressure + " mBar";
       windSpeedPlace.innerText = "Wind: " + windSpeed + " km/h";
 
