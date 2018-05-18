@@ -34,8 +34,42 @@ function weatherApp() {
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var myArr = JSON.parse(this.responseText);
-      console.log(myArr.current_observation);
+      var data = myArr.current_observation;
+      // ============================================
+      // STORING WEATHER DATA
+      // ============================================
+      var tempC       = data.temp_c,
+          tempF       = data.temp_f,
+          dewPointC   = data.dewpoint_c,
+          dewPointF   = data.dewpoint_f,
+          feelsLikeC  = data.feelslike_c,
+          feelsLikeF  = data.feelslike_f,
+          iconDesc    = data.icon,
+          iconUrl     = data.icon_url,
+          wUBrandImg  = data.image.url,
+          timeStamp   = data.observation_time_rfc822,
+          precip1Hr   = data.precip_1hr_string,
+          precipToday = data.pecip_today_string,
+          pressureIn  = data.pressure_in,
+          pressureMb  = data.pressure_mb,
+          relHumidity = data.relative_humidity,
+          stationId   = data.station_id,
+          visKm       = data.visibility_km,
+          visMi       = data.visibility_mi,
+          weatherCon  = data.weather,
+          windDegrees = data.wind_degrees,
+          windDir     = data.wind_dir,
+          windGustKm  = data.wind_gust_kph,
+          windGustMi  = data.wind_gust_mph,
+          windKph     = data.wind_kph,
+          windMph     = data.wind_mph;
+
+
+
+
+
       var temperature = myArr.current_observation.temp_c;
+      var temperatureF = myArr.current_observation.temp_c;
       var weatherCondition = myArr.current_observation.weather;
       var icon = myArr.current_observation.icon_url;
 
