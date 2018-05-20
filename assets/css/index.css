@@ -6,30 +6,52 @@ body {
   color: white;
 }
 
-.containerGrid {
+.location { grid-area: location; }
+.menu { grid-area: menu; }
+.weatherPic { grid-area: weatherPic; }
+.weather { grid-area: weather; }
+.details { grid-area: details; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'location location location location location'
+    'menu weatherPic weather details details'
+    'menu weatherPic weather details details';
+  grid-gap: 2px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.7),
               3px 3px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(250, 250, 250, 0.2);
   border-radius: 5px;
-  margin: 10%;
+  margin: auto;
+  width: 90%;
 }
 
-/* BUTTON - MORE INFO */
-a {
-  text-decoration: none;
-  border-radius: 2px;
-  color: white;
+.hrStyle {
+  height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px rgba(250, 250, 250, 0.2) inset;
 }
-a:hover {
-  color: rgb(38, 198, 218);
+
+.image {
+  width: 150px;
+  height: 150px;
+  /* background: rgba(0, 0, 0, 0.2); */
+  margin: auto 10%;
+}
+
+img {
+  width: 150px;
+  height: 150px;
 }
 
 /* MORE INFO SECTION */
-.hideMoreInfo {
+/* .hideMoreInfo {
   display: none;
-}
+} */
 ul {
   list-style: none;
 }

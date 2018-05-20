@@ -5,50 +5,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>My Weather App</title>
   <link rel="stylesheet" href="assets/css/index.css">
 </head>
 
 <body onload="getLocation()">
-  <div class="containerGrid">
-    <div class="contentLoc">
-      <p class="locationName"></p>
-    </div>
-    <div class="weather">
-      <p class="temp">
-        <span id="temperat"></span> °C
-      </p>
-      <p class="description"></p>
-      <img src="" alt="weather condition icon">
-    </div>
-    <div>
-      <a href="#">More info</a>
-    </div>
-    <div class="moreInfo hideMoreInfo">
-      <div>
-        <ul>
-          <li id="tempMin"></li>
-          <!-- <li id="tempMax"></li> -->
-          <li id="humidity"></li>
-          <li id="pressure"></li>
-          <li id="windSpeed"></li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <form>
 
+  <div class="grid-container">
+
+    <div class="location">
+      <h1 id="location"></h1>
+      <hr class="hrStyle">
+    </div>
+    
+    <div class="menu">
+      <h3>Menu</h3>
+      <hr class="hrStyle">
+      <form>
         <input type="radio" id="celsius" name="unit" checked>
         <label for="celsius">°C</label>
-
-
         <input type="radio" id="fahrenheit" name="unit">
         <label for="fahrenheit">°F</label>
       </form>
+      <a href="#">More info</a>
     </div>
+
+    <div class="weatherPic">
+      <div class="image">
+        <img src="assets/weatherSvgs/animated/day.svg" alt="weather condition" id="weatherPic">
+      </div>
+    </div>
+
+    <div class="weather">
+      <p><span id="temp"></span> °C</p>
+    </div>
+
+    <div class="details">
+      <ul>
+        <li>Precipitation: <span id="precip"></span></li>
+        <li>Humidity: <span id="humid"></span></li>
+        <li>Wind: <span id="wind"></span> kph</li>
+      </ul>
+    </div>
+
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
-
 </html>
