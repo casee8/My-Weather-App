@@ -4,10 +4,13 @@ body {
   background: url(https://static.pexels.com/photos/164024/pexels-photo-164024.jpeg) no-repeat fixed center;
   font-family: 'Montserrat', sans-serif;
   color: white;
+  letter-spacing: 0.1em;
 }
 
 .location { grid-area: location; }
 .menu { grid-area: menu; }
+.menuHeader { grid-area: menuHeader; }
+.header { grid-area: header; }
 .weatherPic { grid-area: weatherPic; }
 .weather { grid-area: weather; }
 .details { grid-area: details; }
@@ -16,9 +19,10 @@ body {
   display: grid;
   grid-template-areas:
     'location location location location location'
+    'menuHeader header header header header'
     'menu weatherPic weather details details'
     'menu weatherPic weather details details';
-  grid-gap: 2px;
+  grid-gap: 5px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
@@ -27,7 +31,58 @@ body {
   border: 1px solid rgba(250, 250, 250, 0.2);
   border-radius: 5px;
   margin: auto;
-  width: 90%;
+  margin-bottom: 10px;
+  width: 60%;
+}
+
+.eTempP { grid-area: eTempP; }
+.ePrecip1HrP { grid-area: ePrecip1HrP; }
+.ePressureP {grid-area: ePressureP; }
+.eWindP { grid-area: eWindP; }
+.eVisP { grid-area: eVisP; }
+.eWFooterP { grid-area: eWFooterP; }
+
+@keyframes fadeIn {
+  from {
+    color: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0),
+                3px 3px rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+  to {
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.7),
+                3px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(250, 250, 250, 0.2);
+  }
+}
+
+.eGrid-container {
+  display: grid;
+  grid-template-areas:
+    'eTempP eTempP eTempP eTempP eTempP'
+    'ePrecip1HrP ePrecip1HrP ePrecip1HrP ePrecip1HrP ePrecip1HrP'
+    'ePressureP ePressureP ePressureP ePressureP ePressureP'
+    'eWindP eWindP eWindP eWindP eWindP'
+    'eVisP eVisP eVisP eVisP eVisP'
+    'eWFooterP eWFooterP eWFooterP eWFooterP eWFooterP';
+  grid-gap: 5px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.7),
+              3px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  border-radius: 5px;
+  margin: auto;
+  width: 60%;
+  transition: all 3s;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
 .hrStyle {
@@ -36,22 +91,35 @@ body {
 	box-shadow: 0 10px 10px -10px rgba(250, 250, 250, 0.2) inset;
 }
 
-.image {
-  width: 150px;
-  height: 150px;
-  /* background: rgba(0, 0, 0, 0.2); */
-  margin: auto 10%;
-}
-
 img {
   width: 150px;
   height: 150px;
 }
 
-/* MORE INFO SECTION */
-/* .hideMoreInfo {
-  display: none;
-} */
-ul {
+body > div > div.details > ul {
+  text-align: left;
+  padding-top: 1em;
+}
+
+body > div.grid-container > div.weather > div {
+  padding-top: 1em;
+}
+
+body > div > div.details > ul > li {
+  padding: 3px;
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: aqua;
+}
+
+/* MORE INFO SECTION */
+.hideMoreInfo {
+  display: none;
 }

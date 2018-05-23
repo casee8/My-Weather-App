@@ -1,13 +1,25 @@
-var loc    = document.querySelector("#location"),
-    weatherpic  = document.querySelector("#weatherPic"),
+// Selecting the elements for the basic weather info
+var loc         = document.querySelector("#location"),
+    weatherPic  = document.querySelector("#weatherPic"),
     temp        = document.querySelector("#temp"),
+    feelsLike   = document.querySelector("#feelsLike"),
     precip      = document.querySelector("#precip"),
     humidity    = document.querySelector("#humid"),
     wind        = document.querySelector("#wind");
 
-// =====================================================================================
+// Selecting the elements for the extended weather info
+var btn         = document.querySelector("#btn"),
+    eGridCont   = document.querySelector(".eGrid-container"),
+    eTemp       = document.querySelector(".eTemp"),
+    ePrecip1Hr  = document.querySelector(".ePrecip1Hr"),
+    ePressure   = document.querySelector(".ePressure"),
+    eWind       = document.querySelector(".eWind"),
+    eVis        = document.querySelector(".eVis"),
+    eWFooter    = document.querySelector(".eWFooter");
+
+//=====================================================================================
 // GETTING THE USER'S LOCATION
-// =====================================================================================
+// ====================================================================================
 
 var lat;
 var lon;
@@ -55,42 +67,53 @@ function weatherApp() {
       // ============================================
       // Storing weather data
       // ============================================
-      var tempC       = data.temp_c,
-          tempF       = data.temp_f,
-          dewPointC   = data.dewpoint_c,
-          dewPointF   = data.dewpoint_f,
-          feelsLikeC  = data.feelslike_c,
-          feelsLikeF  = data.feelslike_f,
-          iconDesc    = data.icon,
-          iconUrl     = data.icon_url,
-          wUBrandImg  = data.image.url,
-          timeStamp   = data.observation_time_rfc822,
-          precip1Hr   = data.precip_1hr_string,
-          precipToday = data.precip_today_string,
-          pressureIn  = data.pressure_in,
-          pressureMb  = data.pressure_mb,
-          relHumidity = data.relative_humidity,
-          stationId   = data.station_id,
-          visKm       = data.visibility_km,
-          visMi       = data.visibility_mi,
-          weatherCon  = data.weather,
-          windDegrees = data.wind_degrees,
-          windDir     = data.wind_dir,
-          windGustKm  = data.wind_gust_kph,
-          windGustMi  = data.wind_gust_mph,
-          windKph     = data.wind_kph,
-          windMph     = data.wind_mph;
+      var tempC       = data.temp_c, //main
+          tempF       = data.temp_f, //main
+          dewPointC   = data.dewpoint_c, //temp
+          dewPointF   = data.dewpoint_f, //temp
+          feelsLikeC  = data.feelslike_c, //main
+          feelsLikeF  = data.feelslike_f, //main
+          // iconDesc    = data.icon, 
+          // iconUrl     = data.icon_url,
+          wUBrandImg  = data.image.url, //footer
+          timeStamp   = data.observation_time_rfc822, //footer
+          precip1Hr   = data.precip_1hr_string, //precip
+          precipToday = data.precip_today_string, //main
+          pressureIn  = data.pressure_in, //pressure
+          pressureMb  = data.pressure_mb, //pressure
+          relHumidity = data.relative_humidity, //main
+          stationId   = data.station_id, //footer
+          visKm       = data.visibility_km, //vis
+          visMi       = data.visibility_mi, //vis
+          weatherCon  = data.weather, //main
+          windDegrees = data.wind_degrees, //wind
+          windDir     = data.wind_dir, //wind
+          windGustKm  = data.wind_gust_kph, //wind
+          windGustMi  = data.wind_gust_mph, //wind
+          windKph     = data.wind_kph, //main
+          windMph     = data.wind_mph; //main
 
       // ============================================
-      // ShowTime
+      // Basic weather data
       // ============================================
       temp.innerText = tempC;
       precip.innerText = precipToday;
       humidity.innerText = relHumidity;
       wind.innerText = windKph;
+      feelsLike.innerText = feelsLikeC;
 
-      button.onclick = function () {
-        $(moreInfo).toggleClass("hideMoreInfo");
+      // ============================================
+      // Extended weather data
+      // ============================================
+      eTemp.innerText = dewPointC;
+      ePrecip1Hr.innerText = precip1Hr;
+      ePressure.innerText = pressureMb;
+      eWind.innerText = windDir + windGustKm;
+      eVis.innerText = visKm;
+      eWFooter.innerText = stationId + wUBrandImg;
+
+      btn.onclick = function () {
+        $(eGridCont).toggleClass("hideMoreInfo");
       }
     }
   }

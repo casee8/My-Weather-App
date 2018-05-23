@@ -18,16 +18,22 @@
       <hr class="hrStyle">
     </div>
     
+    <div class="menuHeader">
+        <h3>Menu</h3>
+    </div>
+
     <div class="menu">
-      <h3>Menu</h3>
-      <hr class="hrStyle">
       <form>
         <input type="radio" id="celsius" name="unit" checked>
         <label for="celsius">°C</label>
         <input type="radio" id="fahrenheit" name="unit">
         <label for="fahrenheit">°F</label>
       </form>
-      <a href="#">More info</a>
+      <a href="#" id="btn">More details</a>
+    </div>
+
+    <div class="header">
+        <h3>Current Weather</h3>
     </div>
 
     <div class="weatherPic">
@@ -37,7 +43,10 @@
     </div>
 
     <div class="weather">
-      <p><span id="temp"></span> °C</p>
+      <div>
+        <p><span id="temp"></span> °C</p>
+        <p>Feels like: <span id="feelsLike"></span> °C</p>
+      </div>
     </div>
 
     <div class="details">
@@ -49,6 +58,17 @@
     </div>
 
   </div>
+
+  <div class="eGrid-container hideMoreInfo">
+    <p class="eTempP">Dew Point: <span class="eTemp"></span></p>
+    <p class="ePrecip1HrP">Precipitation in 1 hour: <span class="ePrecip1Hr"></span></p>
+    <p class="ePressureP">Pressure: <span class="ePressure"></span> Mbar</p>
+    <p class="eWindP">Wind direction: <span class="eWind"></span></p>
+    <p class="eVisP">Visibility: <span class="eVis"></span> km</p>
+    <p class="eWFooterP">Station: <span class="eWFooter"></span></p>
+  </div>
+
+  <div>Alert section - coming soon...</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="assets/js/app.js"></script>
