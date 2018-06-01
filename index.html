@@ -11,6 +11,10 @@
 
 <body onload="getLocation()">
 
+  <div class="infoFlow">
+    <p>Hardcode City: 27 °C</p>
+  </div>
+  
   <div class="grid-container">
 
     <div class="location">
@@ -24,6 +28,10 @@
 
     <div class="menu">
       <form>
+        <div>
+          <input type="text" placeholder="Search City" autofocus>
+          <label for="search"><i class="fa fa-search"></i></label>
+        </div>
         <input type="radio" id="celsius" name="unit" checked>
         <label for="celsius">°C</label>
         <input type="radio" id="fahrenheit" name="unit">
@@ -68,9 +76,8 @@
     <p class="eWFooterP">Station: <span class="eWFooter"></span></p>
   </div>
 
-  <div>Alert section - coming soon...</div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="https://use.fontawesome.com/952a1e84fe.js"></script>
 </body>
 </html>
