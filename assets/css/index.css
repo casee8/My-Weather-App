@@ -191,3 +191,16 @@ a:hover {
     border: none;
   }
 }
+
+@media (max-width: 768px){
+  body {
+    padding: 0;
+    text-shadow: 1px 1px 5px #000;
+  }
+  .grid-container, .infoFlow {
+    width: 95%;
+  }
+  body > div.grid-container > div.weatherPic > div {
+    border: none;
+  }
+}
