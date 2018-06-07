@@ -41,6 +41,10 @@ input {
   margin-bottom: 15px;
 }
 
+form, #btn {
+  display: inline-block;
+}
+
 /* Main Weather stuff */
 
 .location { grid-area: location; }
@@ -171,4 +175,19 @@ a:hover {
 /* MORE INFO SECTION */
 .hideMoreInfo {
   display: none;
+}
+
+@media (max-width: 450px){
+  body {
+    margin: 2%;
+    padding: 0;
+    text-shadow: 1px 1px 5px #000;
+  }
+  .grid-container {
+    display: block;
+    width: 95%;
+  }
+  body > div.grid-container > div.weatherPic > div {
+    border: none;
+  }
 }
