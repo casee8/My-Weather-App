@@ -110,7 +110,7 @@ function weatherApp() {
       ePressure.innerText = pressureMb;
       eWind.innerText = windDir + windGustKm;
       eVis.innerText = visKm;
-      eWFooter.innerText = stationId + wUBrandImg;
+      // eWFooter.innerText = stationId + wUBrandImg;
 
       btn.onclick = function () {
         $(eGridCont).toggleClass("hideMoreInfo");

@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
-  background: url(https://static.pexels.com/photos/164024/pexels-photo-164024.jpeg) no-repeat fixed center;
+  background: url("../media/weather-bckgrnd.jpeg") no-repeat fixed center;
+  background-size: cover;
   font-family: 'Montserrat', sans-serif;
   color: white;
   letter-spacing: 0.1em;
@@ -177,28 +178,25 @@ a:hover {
   display: none;
 }
 
-@media (max-width: 450px){
+@media only screen and (max-width: 768px){
   body {
-    margin: 2%;
     padding: 0;
+    margin: auto;
     text-shadow: 1px 1px 5px #000;
   }
-  .grid-container {
+  .infoFlow{
+    margin-top: 2%;
+  }
+  .grid-container, .infoFlow, .eGrid-container {
+    width: 90%;
     display: block;
-    width: 95%;
+    transition: none;
   }
-  body > div.grid-container > div.weatherPic > div {
-    border: none;
+  .eGrid-container {
+    margin-bottom: 2%;
   }
-}
-
-@media (max-width: 768px){
-  body {
-    padding: 0;
-    text-shadow: 1px 1px 5px #000;
-  }
-  .grid-container, .infoFlow {
-    width: 95%;
+  #btn {
+    display: none;
   }
   body > div.grid-container > div.weatherPic > div {
     border: none;
