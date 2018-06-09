@@ -28,7 +28,7 @@ function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
+    showError("Geolocation is not supported by this browser!");
   };
   showPosition();
 }
@@ -101,7 +101,8 @@ function weatherApp() {
       humidity.innerText = relHumidity;
       wind.innerText = windKph;
       feelsLike.innerText = feelsLikeC;
-
+      weatherPic.setAttribute("src", "assets/media/node_modules/weather-underground-icons/dist/icons/white/png/64x64/" + weatherCon.toLowerCase().replace(/ /g, '') + ".png");
+      
       // ============================================
       // Extended weather data
       // ============================================

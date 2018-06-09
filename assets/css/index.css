@@ -6,6 +6,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: white;
   letter-spacing: 0.1em;
+  text-shadow: 0 0 10px #000;
 }
 
 .infoFlow {
@@ -82,8 +83,23 @@ form, #btn {
 	box-shadow: 0 10px 10px -10px rgba(250, 250, 250, 0.2) inset;
 }
 
-body > div.grid-container > div.weatherPic > div {
-  border-left: 1px solid rgba(250, 250, 250, 0.2);
+a {
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+  transition: 200ms;
+}
+
+a:hover {
+  color: aqua;
+  transform: scale(1.1);
+}
+
+/* Main weather details */
+
+body > div > div.details > ul > li {
+  padding: 3px;
+  list-style: none;
 }
 
 /* Extended weather stuff */
@@ -140,39 +156,6 @@ body > div.grid-container > div.weatherPic > div {
   }
 }
 
-
-
-/* other (for now) */
-
-img {
-  width: 150px;
-  height: 150px;
-}
-
-body > div > div.details > ul {
-  text-align: left;
-  padding-top: 1em;
-}
-
-body > div.grid-container > div.weather > div {
-  padding-top: 1em;
-}
-
-body > div > div.details > ul > li {
-  padding: 3px;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-  padding: 15px;
-}
-
-a:hover {
-  color: aqua;
-}
-
 /* MORE INFO SECTION */
 .hideMoreInfo {
   display: none;
@@ -182,7 +165,6 @@ a:hover {
   body {
     padding: 0;
     margin: auto;
-    text-shadow: 1px 1px 5px #000;
   }
   .infoFlow{
     margin-top: 2%;
