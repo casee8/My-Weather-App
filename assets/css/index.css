@@ -141,8 +141,7 @@ body > div > div.details > ul > li {
     'eWindP eWindP radarMap radarMap radarMap'
     'eVisP eVisP radarMap radarMap radarMap'
     'eWFooterP eWFooterP radarMap radarMap radarMap';
-  /* grid-gap: 5px;
-  text-align: center; */
+  /* grid-gap: 5px; */
   background-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.7),
@@ -208,5 +207,9 @@ body > div > div.details > ul > li {
   }
   body > div.grid-container > div.weatherPic > div {
     border: none;
+  }
+  #map {
+    height: 280px;
+    width: 280px;
   }
 }
