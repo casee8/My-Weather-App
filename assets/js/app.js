@@ -22,8 +22,8 @@ var btn         = document.querySelector("#btn"),
 // GETTING THE USER'S LOCATION
 // ====================================================================================
 
-var lat;
-var lon;
+var lati;
+var long;
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -35,14 +35,15 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
+  lati = position.coords.latitude;
+  long = position.coords.longitude;
   weatherApp();
+  initMap();
 }
 
 function geoCoding() {
   var xmlhttp = new XMLHttpRequest();
-  var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&key=AIzaSyDAHgPXl5edvHYkxvsNb8YMvVdNHZfF0io";
+  var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lati + "," + long + "&key=AIzaSyDAHgPXl5edvHYkxvsNb8YMvVdNHZfF0io";
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var mySecArr = JSON.parse(this.responseText);
@@ -54,13 +55,28 @@ function geoCoding() {
   xmlhttp.send();
 }
 
+// ============================================
+// Google Maps - Radar Map
+// ============================================
+
+// Initialize and add the map
+function initMap() {
+  // The location of "radarLoc"
+  var radarLoc = {lat: lati, lng: long};
+  // The map, centered at "radarLoc"
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 10, center: radarLoc});
+  // The marker, positioned at radarLoc
+  var marker = new google.maps.Marker({position: radarLoc, map: map});
+}
+
 // =====================================================================================
 // WEATHER API - DATA STORING
 // =====================================================================================
 
 function weatherApp() {
   var xmlhttp = new XMLHttpRequest();
-  var url = "https://api.wunderground.com/api/b47388355b8e168a/conditions/q/" + lat + "," + lon + ".json";
+  var url = "https://api.wunderground.com/api/b47388355b8e168a/conditions/q/" + lati + "," + long + ".json";
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var myArr = JSON.parse(this.responseText);
@@ -101,7 +117,7 @@ function weatherApp() {
       precip.innerText = precipToday;
       humidity.innerText = relHumidity;
       wind.innerText = windKph;
-      feelsLike.innerText = Math.floor(feelsLikeC);
+      feelsLike.innerText = Math.round(feelsLikeC);
       weatherPic.setAttribute("src", "assets/weatherSvgs/animated/" + weatherCon.toLowerCase().replace(/ /g, '') + ".svg");
       currentWeather.innerText = weatherCon;
       
@@ -124,3 +140,17 @@ function weatherApp() {
   xmlhttp.send();
   geoCoding();
 }
+
+// =====================================================================================
+// City Search
+// =====================================================================================
+
+// var searchedCity;
+
+// $("input[type='text']").keypress(function(enterPressed){
+//   if(enterPressed.which === 13) {
+//     searchedCity = $(this).val();
+//     $(this).value("");
+//   }
+// });
+

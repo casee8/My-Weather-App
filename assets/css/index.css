@@ -130,18 +130,19 @@ body > div > div.details > ul > li {
 .eWindP { grid-area: eWindP; }
 .eVisP { grid-area: eVisP; }
 .eWFooterP { grid-area: eWFooterP; }
+.radarMap { grid-area: radarMap; }
 
 .eGrid-container {
   display: grid;
   grid-template-areas:
-    'eTempP eTempP eTempP eTempP eTempP'
-    'ePrecip1HrP ePrecip1HrP ePrecip1HrP ePrecip1HrP ePrecip1HrP'
-    'ePressureP ePressureP ePressureP ePressureP ePressureP'
-    'eWindP eWindP eWindP eWindP eWindP'
-    'eVisP eVisP eVisP eVisP eVisP'
-    'eWFooterP eWFooterP eWFooterP eWFooterP eWFooterP';
-  grid-gap: 5px;
-  text-align: center;
+    'eTempP eTempP radarMap radarMap radarMap'
+    'ePrecip1HrP ePrecip1HrP radarMap radarMap radarMap'
+    'ePressureP ePressureP radarMap radarMap radarMap'
+    'eWindP eWindP radarMap radarMap radarMap'
+    'eVisP eVisP radarMap radarMap radarMap'
+    'eWFooterP eWFooterP radarMap radarMap radarMap';
+  /* grid-gap: 5px;
+  text-align: center; */
   background-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.7),
@@ -153,6 +154,11 @@ body > div > div.details > ul > li {
   transition: all 3s;
   animation-name: fadeIn;
   animation-duration: 1s;
+}
+
+#map {
+  height: 400px;
+  width: 400px;
 }
 
 /* Animation */

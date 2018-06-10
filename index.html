@@ -70,16 +70,38 @@
   </div>
 
   <div class="eGrid-container hideMoreInfo">
-    <p class="eTempP">Dew Point: <span class="eTemp"></span></p>
-    <p class="ePrecip1HrP">Precipitation in 1 hour: <span class="ePrecip1Hr"></span></p>
-    <p class="ePressureP">Pressure: <span class="ePressure"></span> Mbar</p>
-    <p class="eWindP">Wind direction: <span class="eWind"></span></p>
-    <p class="eVisP">Visibility: <span class="eVis"></span> km</p>
-    <!-- <p class="eWFooterP">Station: <span class="eWFooter"></span></p> -->
+
+    <div class="eTempP">
+      <p>Dew Point: <span class="eTemp"></span></p>
+    </div>
+
+    <div class="ePrecip1HrP">
+      <p>Precipitation in 1 hour: <span class="ePrecip1Hr"></span></p>
+    </div>
+
+    <div class="ePressureP">
+      <p>Pressure: <span class="ePressure"></span> Mbar</p>
+    </div>
+
+    <div class="eWindP">
+      <p>Wind direction: <span class="eWind"></span></p>
+    </div>
+
+    <div class="eVisP">
+      <p>Visibility: <span class="eVis"></span> km</p>
+    </div>
+
+    <div class="radarMap">
+      <div id="map"></div>
+    </div>
+    
   </div>
+
+  <!-- <footer><p class="eWFooterP">Station: <span class="eWFooter"></span></p></footer> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="assets/js/app.js"></script>
   <script src="https://use.fontawesome.com/952a1e84fe.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLNcy2CMlYqdbsjO41kROoOG9UTLOxWC8&callback=initMap"></script>
 </body>
 </html>
