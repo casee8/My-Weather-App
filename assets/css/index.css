@@ -47,7 +47,7 @@ form, #btn {
   display: inline-block;
 }
 
-/* Main Weather stuff */
+/* Grid */
 
 .location { grid-area: location; }
 .menu { grid-area: menu; }
@@ -77,6 +77,21 @@ form, #btn {
   width: 60%;
 }
 
+/* Main weather stuff */
+
+body > div.grid-container > div.location {
+  margin: 0;
+}
+
+div {
+  margin: auto;
+}
+
+#weatherPic {
+  height: 130px;
+  width: 130px;
+}
+
 .hrStyle {
   height: 10px;
 	border: 0;
@@ -95,11 +110,16 @@ a:hover {
   transform: scale(1.1);
 }
 
+#currentWeather {
+  margin: 0;
+}
+
 /* Main weather details */
 
 body > div > div.details > ul > li {
   padding: 3px;
   list-style: none;
+  text-align: left;
 }
 
 /* Extended weather stuff */

@@ -1,11 +1,12 @@
 // Selecting the elements for the basic weather info
-var loc         = document.querySelector("#location"),
-    weatherPic  = document.querySelector("#weatherPic"),
-    temp        = document.querySelector("#temp"),
-    feelsLike   = document.querySelector("#feelsLike"),
-    precip      = document.querySelector("#precip"),
-    humidity    = document.querySelector("#humid"),
-    wind        = document.querySelector("#wind");
+var loc             = document.querySelector("#location"),
+    weatherPic      = document.querySelector("#weatherPic"),
+    temp            = document.querySelector("#temp"),
+    feelsLike       = document.querySelector("#feelsLike"),
+    precip          = document.querySelector("#precip"),
+    humidity        = document.querySelector("#humid"),
+    wind            = document.querySelector("#wind"),
+    currentWeather  = document.querySelector("#currentWeather");
 
 // Selecting the elements for the extended weather info
 var btn         = document.querySelector("#btn"),
@@ -100,8 +101,9 @@ function weatherApp() {
       precip.innerText = precipToday;
       humidity.innerText = relHumidity;
       wind.innerText = windKph;
-      feelsLike.innerText = feelsLikeC;
-      weatherPic.setAttribute("src", "assets/media/node_modules/weather-underground-icons/dist/icons/white/png/64x64/" + weatherCon.toLowerCase().replace(/ /g, '') + ".png");
+      feelsLike.innerText = Math.floor(feelsLikeC);
+      weatherPic.setAttribute("src", "assets/weatherSvgs/animated/" + weatherCon.toLowerCase().replace(/ /g, '') + ".svg");
+      currentWeather.innerText = weatherCon;
       
       // ============================================
       // Extended weather data
