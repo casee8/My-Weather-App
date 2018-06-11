@@ -12,7 +12,7 @@
 <body onload="getLocation()">
 
   <div class="infoFlow">
-    <p>Hardcode City: 27 °C</p>
+    <p>Hardcode City: 27 °<span class="unitTemp">C</span></p>
   </div>
   
   <div class="grid-container">
@@ -31,9 +31,9 @@
         <div>
           <input type="text" placeholder="Search City" autofocus>
         </div>
-        <input type="radio" id="celsius" name="unit" checked>
+        <input type="radio" id="celsius" checked>
         <label for="celsius">°C</label>
-        <input type="radio" id="fahrenheit" name="unit">
+        <input type="radio" id="fahrenheit">
         <label for="fahrenheit">°F</label>
       </form>
       <div>
@@ -54,8 +54,8 @@
 
     <div class="weather">
       <div>
-        <p><span id="temp"></span> °C</p>
-        <p>Feels like: <span id="feelsLike"></span> °C</p>
+        <p><span id="temp"></span> °<span class="unitTemp">C</span></p>
+        <p>Feels like: <span id="feelsLike"></span> °<span class="unitTemp">C</span></p>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
   <div class="eGrid-container hideMoreInfo">
 
     <div class="eTempP">
-      <p>Dew Point: <span class="eTemp"></span></p>
+      <p>Dew Point: <span class="eTemp"></span> °<span class="unitTemp">C</span></p>
     </div>
 
     <div class="ePrecip1HrP">

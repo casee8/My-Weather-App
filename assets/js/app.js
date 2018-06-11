@@ -60,14 +60,33 @@ function geoCoding() {
 // ============================================
 
 // Initialize and add the map
+var marker;
+
 function initMap() {
   // The location of "radarLoc"
   var radarLoc = {lat: lati, lng: long};
   // The map, centered at "radarLoc"
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 10, center: radarLoc});
+  var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: radarLoc,
+        gestureHandling: 'none',
+        zoomControl: false
+      });
   // The marker, positioned at radarLoc
-  var marker = new google.maps.Marker({position: radarLoc, map: map});
+    marker = new google.maps.Marker({
+    position: radarLoc,
+    map: map,
+    animation: google.maps.Animation.DROP
+  });
+  marker.addListener('click', toggleBounce);
+}
+
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
 }
 
 // =====================================================================================
@@ -154,3 +173,9 @@ function weatherApp() {
 //   }
 // });
 
+// ============================================
+// Unit system (C - F / Km - Mi)
+// ============================================
+
+var unitTemp = document.getElementsByClassName("unitTemp");
+console.log(unitTemp);
