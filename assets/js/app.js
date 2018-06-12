@@ -93,6 +93,29 @@ function toggleBounce() {
 // WEATHER API - DATA STORING
 // =====================================================================================
 
+var tempC,
+    dewPointC,
+    feelsLikeC,
+    // iconDesc    = data.icon, 
+    // iconUrl     = data.icon_url,
+    wUBrandImg,
+    timeStamp,
+    precip1Hr,
+    precipToday,
+    pressureIn,
+    pressureMb,
+    relHumidity,
+    stationId,
+    visKm,
+    visMi,
+    weatherCon,
+    windDegrees,
+    windDir,
+    windGustKm,
+    windGustMi,
+    windKph,
+    windMph;
+
 function weatherApp() {
   var xmlhttp = new XMLHttpRequest();
   var url = "https://api.wunderground.com/api/b47388355b8e168a/conditions/q/" + lati + "," + long + ".json";
@@ -103,28 +126,28 @@ function weatherApp() {
       // ============================================
       // Storing weather data
       // ============================================
-      var tempC       = data.temp_c, //main
-          dewPointC   = data.dewpoint_c, //temp
-          feelsLikeC  = data.feelslike_c, //main
-          // iconDesc    = data.icon, 
-          // iconUrl     = data.icon_url,
-          wUBrandImg  = data.image.url, //footer
-          timeStamp   = data.observation_time_rfc822, //footer
-          precip1Hr   = data.precip_1hr_string, //precip
-          precipToday = data.precip_today_string, //main
-          pressureIn  = data.pressure_in, //pressure
-          pressureMb  = data.pressure_mb, //pressure
-          relHumidity = data.relative_humidity, //main
-          stationId   = data.station_id, //footer
-          visKm       = data.visibility_km, //vis
-          visMi       = data.visibility_mi, //vis
-          weatherCon  = data.weather, //main
-          windDegrees = data.wind_degrees, //wind
-          windDir     = data.wind_dir, //wind
-          windGustKm  = data.wind_gust_kph, //wind
-          windGustMi  = data.wind_gust_mph, //wind
-          windKph     = data.wind_kph, //main
-          windMph     = data.wind_mph; //main
+      tempC       = data.temp_c; //main
+      dewPointC   = data.dewpoint_c; //temp
+      feelsLikeC  = data.feelslike_c; //main
+      // iconDesc    = data.icon, 
+      // iconUrl     = data.icon_url,
+      wUBrandImg  = data.image.url; //footer
+      timeStamp   = data.observation_time_rfc822; //footer
+      precip1Hr   = data.precip_1hr_string; //precip
+      precipToday = data.precip_today_string; //main
+      pressureIn  = data.pressure_in; //pressure
+      pressureMb  = data.pressure_mb; //pressure
+      relHumidity = data.relative_humidity; //main
+      stationId   = data.station_id; //footer
+      visKm       = data.visibility_km; //vis
+      visMi       = data.visibility_mi; //vis
+      weatherCon  = data.weather; //main
+      windDegrees = data.wind_degrees; //wind
+      windDir     = data.wind_dir; //wind
+      windGustKm  = data.wind_gust_kph; //wind
+      windGustMi  = data.wind_gust_mph; //wind
+      windKph     = data.wind_kph; //main
+      windMph     = data.wind_mph; //main
 
       // ============================================
       // Basic weather data
@@ -150,36 +173,6 @@ function weatherApp() {
       btn.onclick = function () {
         $(eGridCont).toggleClass("hideMoreInfo");
       }
-
-      // ============================================
-      // Unit system (C - F / Km - Mi)
-      // ============================================
-
-      var unitC = document.querySelector("#unitC"),
-          unitF = document.querySelector("#unitF"),
-          unitTemp = document.querySelectorAll(".unitTemp");
-
-      unitF.addEventListener('click', function(){
-        unitF.classList.add("unitBtn");
-        unitC.classList.remove("unitBtn");
-        for(var i = 0; i < unitTemp.length; i++) {
-          unitTemp[i].innerText = "F";
-        }
-        temp.innerText = Math.round(tempC * 1.8 + 32);
-        eTemp.innerText = Math.round(dewPointC * 1.8 + 32);
-        feelsLike.innerText = Math.round(feelsLikeC * 1.8 + 32);
-      });
-
-      unitC.addEventListener('click', function(){
-        unitC.classList.add("unitBtn");
-        unitF.classList.remove("unitBtn");
-        for(var i = 0; i < unitTemp.length; i++) {
-          unitTemp[i].innerText = "C";
-        }
-        temp.innerText = tempC;
-        eTemp.innerText = dewPointC;
-        feelsLike.innerText = Math.round(feelsLikeC);
-      });
     }
   }
   xmlhttp.open("GET", url, true);
@@ -199,3 +192,33 @@ function weatherApp() {
 //     $(this).value("");
 //   }
 // });
+
+// ============================================
+// Unit system (C - F / Km - Mi)
+// ============================================
+
+var unitC = document.querySelector("#unitC"),
+    unitF = document.querySelector("#unitF"),
+    unitTemp = document.querySelectorAll(".unitTemp");
+
+unitF.addEventListener('click', function(){
+  unitF.classList.add("unitBtn");
+  unitC.classList.remove("unitBtn");
+  for(var i = 0; i < unitTemp.length; i++) {
+    unitTemp[i].innerText = "F";
+  }
+  temp.innerText = Math.round(tempC * 1.8 + 32);
+  eTemp.innerText = Math.round(dewPointC * 1.8 + 32);
+  feelsLike.innerText = Math.round(feelsLikeC * 1.8 + 32);
+});
+
+unitC.addEventListener('click', function(){
+  unitC.classList.add("unitBtn");
+  unitF.classList.remove("unitBtn");
+  for(var i = 0; i < unitTemp.length; i++) {
+    unitTemp[i].innerText = "C";
+  }
+  temp.innerText = tempC;
+  eTemp.innerText = dewPointC;
+  feelsLike.innerText = Math.round(feelsLikeC);
+});
