@@ -104,11 +104,8 @@ function weatherApp() {
       // Storing weather data
       // ============================================
       var tempC       = data.temp_c, //main
-          tempF       = data.temp_f, //main
           dewPointC   = data.dewpoint_c, //temp
-          dewPointF   = data.dewpoint_f, //temp
           feelsLikeC  = data.feelslike_c, //main
-          feelsLikeF  = data.feelslike_f, //main
           // iconDesc    = data.icon, 
           // iconUrl     = data.icon_url,
           wUBrandImg  = data.image.url, //footer
@@ -153,6 +150,36 @@ function weatherApp() {
       btn.onclick = function () {
         $(eGridCont).toggleClass("hideMoreInfo");
       }
+
+      // ============================================
+      // Unit system (C - F / Km - Mi)
+      // ============================================
+
+      var unitC = document.querySelector("#unitC"),
+          unitF = document.querySelector("#unitF"),
+          unitTemp = document.querySelectorAll(".unitTemp");
+
+      unitF.addEventListener('click', function(){
+        unitF.classList.add("unitBtn");
+        unitC.classList.remove("unitBtn");
+        for(var i = 0; i < unitTemp.length; i++) {
+          unitTemp[i].innerText = "F";
+        }
+        temp.innerText = Math.round(tempC * 1.8 + 32);
+        eTemp.innerText = Math.round(dewPointC * 1.8 + 32);
+        feelsLike.innerText = Math.round(feelsLikeC * 1.8 + 32);
+      });
+
+      unitC.addEventListener('click', function(){
+        unitC.classList.add("unitBtn");
+        unitF.classList.remove("unitBtn");
+        for(var i = 0; i < unitTemp.length; i++) {
+          unitTemp[i].innerText = "C";
+        }
+        temp.innerText = tempC;
+        eTemp.innerText = dewPointC;
+        feelsLike.innerText = Math.round(feelsLikeC);
+      });
     }
   }
   xmlhttp.open("GET", url, true);
@@ -172,10 +199,3 @@ function weatherApp() {
 //     $(this).value("");
 //   }
 // });
-
-// ============================================
-// Unit system (C - F / Km - Mi)
-// ============================================
-
-var unitTemp = document.getElementsByClassName("unitTemp");
-console.log(unitTemp);

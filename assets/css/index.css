@@ -77,6 +77,20 @@ form, #btn {
   width: 60%;
 }
 
+/* Menu */
+
+button {
+  border-radius: 5px;
+  outline: none;
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(250, 250, 250, 0.4);
+}
+
+.unitBtn {
+  color: aqua;
+  text-shadow: 0 0 7px aqua;
+}
+
 /* Main weather stuff */
 
 body > div.grid-container > div.location {
