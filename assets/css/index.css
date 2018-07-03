@@ -170,9 +170,22 @@ body > div > div.details > ul > li {
 }
 
 #map {
+  z-index: 0;
   height: 400px;
   width: 400px;
 }
+
+.radarMap {
+  height: 400px;
+}
+
+/* #wURadarLayer {
+  width: 400px;
+  height: 400px;
+  z-index: 1;
+  position: relative;
+  top: -400px;
+} */
 
 /* Animation */
 

@@ -1,6 +1,5 @@
 // Selecting the elements for the basic weather info
-var loc             = document.querySelector("#location"),
-    weatherPic      = document.querySelector("#weatherPic"),
+var weatherPic      = document.querySelector("#weatherPic"),
     temp            = document.querySelector("#temp"),
     feelsLike       = document.querySelector("#feelsLike"),
     precip          = document.querySelector("#precip"),
@@ -18,76 +17,45 @@ var btn         = document.querySelector("#btn"),
     eVis        = document.querySelector(".eVis"),
     eWFooter    = document.querySelector(".eWFooter");
 
-//=====================================================================================
-// GETTING THE USER'S LOCATION
-// ====================================================================================
-
-var lati;
-var long;
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    showError("Geolocation is not supported by this browser!");
-  };
-  showPosition();
-}
-
-function showPosition(position) {
-  lati = position.coords.latitude;
-  long = position.coords.longitude;
-  weatherApp();
-  initMap();
-}
-
-function geoCoding() {
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lati + "," + long + "&key=AIzaSyDAHgPXl5edvHYkxvsNb8YMvVdNHZfF0io";
-  xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      var mySecArr = JSON.parse(this.responseText);
-      var nearLocation = mySecArr.results[4].formatted_address;
-      loc.innerText = nearLocation;
-    }
-  }
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
-}
-
 // ============================================
 // Google Maps - Radar Map
 // ============================================
 
-// Initialize and add the map
-var marker;
+var geocoder;
+var map;
 
 function initMap() {
-  // The location of "radarLoc"
-  var radarLoc = {lat: lati, lng: long};
-  // The map, centered at "radarLoc"
-  var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: radarLoc,
-        gestureHandling: 'none',
-        zoomControl: false
-      });
-  // The marker, positioned at radarLoc
-    marker = new google.maps.Marker({
-    position: radarLoc,
-    map: map,
-    animation: google.maps.Animation.DROP
+    map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: lati, lng: long},
+    gestureHandling: 'none',
+    zoomControl: false,
+    mapTypeControlOptions: {
+      mapTypeIds: []
+    }
   });
-  marker.addListener('click', toggleBounce);
+  var geocoder = new google.maps.Geocoder;
+  var infowindow = new google.maps.InfoWindow;
+  geocodeLatLng(geocoder, map, infowindow);
 }
 
-function toggleBounce() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
+function geocodeLatLng(geocoder, map, infowindow) {
+  var latiLong = lati + "," + long;
+  var latlngStr = latiLong.split(',', 2);
+  var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+  geocoder.geocode({'location': latlng}, function(results, status) {
+    if (status === 'OK') {
+      if (results[0]) {
+        loc.innerText = results[0].formatted_address;
+      } else {
+        window.alert('No results found');
+      }
+    }
+  });
 }
+
+// var wURadarLayer = document.querySelector("#wURadarLayer");
+// wURadarLayer.setAttribute("src", "http://api.wunderground.com/api/b47388355b8e168a/animatedradar/animatedsatellite/image.gif?num=8&delay=50&rad.maxlat=51.47&rad.maxlon=-2.61&rad.minlat=31.596&rad.minlon=-97.388&rad.width=640&rad.height=480&rad.rainsnow=1&rad.reproj.automerc=1&rad.num=5&sat.maxlat=47.709&sat.maxlon=-69.263&sat.minlat=31.596&sat.minlon=-97.388&sat.width=640&sat.height=480&sat.key=sat_ir4_bottom&sat.gtt=107&sat.proj=me&sat.timelabel=0&sat.num=5");
 
 // =====================================================================================
 // WEATHER API - DATA STORING
@@ -177,7 +145,7 @@ function weatherApp() {
   }
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
-  geoCoding();
+  // geoCoding();
 }
 
 // =====================================================================================
